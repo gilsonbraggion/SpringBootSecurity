@@ -2,42 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header-css">
 </head>
-<body>
+<body >
 
+	<div class="container-fluid p-6 bg-primary text-white text-center w-50 mx-auto">
+		<form th:action="@{/login}" method="post">
+			<h1>Please Sign In</h1>
 
-	<div class="container">
-
-		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<form th:action="@{/login}" method="post">
-					<fieldset>
-						<h1>Please Sign In</h1>
-
-						<div th:if="${param.error}">
-							<div class="alert alert-danger">Invalid username and password.</div>
-						</div>
-						<div th:if="${param.logout}">
-							<div class="alert alert-info">You have been logged out.</div>
-						</div>
-
-						<div class="form-group">
-							<input type="text" name="username" id="username" class="form-control input-lg" placeholder="UserName" required="required" autofocus="autofocus" />
-						</div>
-						<div class="form-group">
-							<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" required="required" />
-						</div>
-
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In" />
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6"></div>
-						</div>
-					</fieldset>
-				</form>
+			<div class="mb-3">
+				<label for="formGroupExampleInput" class="form-label">Username</label> <input type="text" class="form-control" placeholder="Username -> email" name="username" id="username">
 			</div>
-		</div>
+			<div class="mb-3">
+				<label for="formGroupExampleInput2" class="form-label">Password</label> <input type="text" class="form-control" placeholder="Password" name="password" id="password">
+			</div>
 
+			<div th:if="${param.error}">
+				<div class="alert alert-danger">Invalid username and password.</div>
+			</div>
+			<div th:if="${param.logout}">
+				<div class="alert alert-info">You have been logged out.</div>
+			</div>
+
+			<div class="mb-3">
+				<button type="submit" class="btn btn-primary">Sign in</button>
+			</div>
+		</form>
 	</div>
 
 
