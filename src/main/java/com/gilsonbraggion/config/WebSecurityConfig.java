@@ -17,6 +17,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private MyCustomDetailService customDetailService;
 	
+	@Autowired
+	private MyAccessDeniedHandler accessDeniedHandler;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
@@ -38,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .logout()
         .permitAll()
         .and()
-      .httpBasic();
+      .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
 		
 //		// Allow access to those URL whithout authentication
 //		http.authorizeHttpRequests().antMatchers("/h2-console/**").permitAll()
