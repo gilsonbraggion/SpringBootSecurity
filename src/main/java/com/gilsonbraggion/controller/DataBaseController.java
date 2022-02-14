@@ -25,12 +25,20 @@ public class DataBaseController {
 		
 		userRepo.deleteAll();
 
+
+		Role roleAdmin = new Role();
+		roleAdmin.setName("ADMIN");
+		
+		Role roleUser = new Role();
+		roleUser.setName("USER");
+		
+		Role roleGeneral = new Role();
+		roleGeneral.setName("GENERAL");
+		
 		User userAdmin = new User();
 		userAdmin.setEmail("admin@gmail.com");
 		userAdmin.setUserName("Admin User");
 		userAdmin.setPassword(new BCryptPasswordEncoder().encode("admin"));
-		Role roleAdmin = new Role();
-		roleAdmin.setName("ADMIN");
 		List<Role> rolesAdmin = new ArrayList<Role>();
 		rolesAdmin.add(roleAdmin);
 		userAdmin.setRoles(rolesAdmin);
@@ -41,8 +49,6 @@ public class DataBaseController {
 		userUser.setEmail("user@gmail.com");
 		userUser.setUserName("Common User");
 		userUser.setPassword(new BCryptPasswordEncoder().encode("user"));
-		Role roleUser = new Role();
-		roleUser.setName("USER");
 		List<Role> rolesUser = new ArrayList<Role>();
 		rolesUser.add(roleUser);
 		userUser.setRoles(rolesUser);
@@ -53,8 +59,6 @@ public class DataBaseController {
 		userGeneral.setEmail("general@gmail.com");
 		userGeneral.setUserName("General User");
 		userGeneral.setPassword(new BCryptPasswordEncoder().encode("general"));
-		Role roleGeneral = new Role();
-		roleGeneral.setName("GENERAL");
 		List<Role> rolesGeneral = new ArrayList<Role>();
 		rolesGeneral.add(roleGeneral);
 		userGeneral.setRoles(rolesGeneral);
